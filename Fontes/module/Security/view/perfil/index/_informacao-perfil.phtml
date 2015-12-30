@@ -1,0 +1,30 @@
+<?php
+
+use Application\Entity\Perfil as PerfilEntity;
+?>
+<br />
+<div>
+    <div class="col-lg-6">
+        <label>Nome do Perfil:</label>
+        <p><?php echo $this->perfil->getNoPerfil(); ?></p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-lg-6">
+        <label>Descrilção do Perfil:</label>
+        <p><?php echo $this->perfil->getDsPerfil(); ?></p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-lg-6">
+        <label>Situação:</label>
+        <br />
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-success <?php echo ($this->perfil->getInAtivo() == PerfilEntity::CO_STATUS_ATIVO ? 'active' : 'disabled'); ?>">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Ativo
+            </label>
+            <label class="btn btn-danger <?php echo ($this->perfil->getInAtivo() == PerfilEntity::CO_STATUS_INATIVO ? 'active' : 'disabled'); ?>">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Inativo
+            </label>
+        </div>
+        <br /><br />
+    </div>
+</div>

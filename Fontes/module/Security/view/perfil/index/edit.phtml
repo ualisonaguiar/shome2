@@ -1,0 +1,50 @@
+<?php
+$strTitle = 'Edição do Perfil';
+echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
+?>
+<div class="col-md-12">
+    <h3 class="text-center"><?php echo $strTitle; ?></h3>
+    <div>
+        <?php
+        echo $this->form()->openTag($this->form);
+        ?>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <div class="col-md-5">
+        <?php
+        # id Perfil
+        echo $this->formElement($this->form->get('idPerfil'));
+        # nome do perfil
+        echo $this->formLabel($this->form->get('noPerfil'));
+        echo $this->formElement($this->form->get('noPerfil'));
+        ?>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <div class="col-md-5">
+        <?php
+        # descricao do perfil
+        echo $this->formLabel($this->form->get('dsPerfil'));
+        echo $this->formElement($this->form->get('dsPerfil'));
+        ?>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <div class="pull-right">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <?php
+                # botao de salvar
+                echo $this->formElement($this->form->get('btnVoltar'));
+                ?>
+            </div>
+            <div class="col-md-6">
+                <?php
+                # botao de salvar
+                echo $this->formElement($this->form->get('btnSalvar'));
+                ?>
+            </div>
+        </div>
+    </div>
+</div>

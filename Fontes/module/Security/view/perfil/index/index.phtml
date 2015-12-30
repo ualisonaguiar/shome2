@@ -1,0 +1,83 @@
+<?php
+$strTitle = 'Listagem de Perfil';
+echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
+?>
+<div class="col-md-12">
+    <h3 class="text-center"><?php echo $strTitle; ?></h3>
+    <div>
+        <?php
+        echo $this->form()->openTag($this->form);
+        ?>
+        <div class="pull-right">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <?php
+                    # botao de cadastrar
+                    echo $this->formElement($this->form->get('btnCadastro'));
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-10">
+            <div class="col-md-5">
+                <?php
+                # nome
+                echo $this->formLabel($this->form->get('noPerfil'));
+                echo $this->formElement($this->form->get('noPerfil'));
+                ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-10">
+            <div class="col-md-5">
+                <?php
+                # situacao
+                echo $this->formLabel($this->form->get('inAtivo'));
+                echo $this->formElement($this->form->get('inAtivo'));
+                ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="pull-right">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <?php
+                    # botao de limpar
+                    echo $this->formElement($this->form->get('btnClear'));
+                    ?>
+                </div>
+                <div class="col-md-6">
+                    <?php
+                    # botao de salvar
+                    echo $this->formElement($this->form->get('btnPesquisar'));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="listagem hide">
+    <div class="clearfix"></div>
+    <br />
+    <table id="tableListagem" class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                    <i class="fa fa-sort-asc" style="color: #003bb3;"></i>
+                </th>
+                <th>Usuário vinculado</th>
+                <th>Ações vinculado</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<?php
+$this->headScript()->prependFile($this->basePath('module/perfil/js/listagem.js'));

@@ -1,0 +1,34 @@
+<?php
+$strTitle = 'Víncular Usuário ao Perfil';
+echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
+?>
+<div class="col-md-12">
+    <h3 class="text-center"><?php echo $strTitle; ?></h3>
+    <div class="pull-right">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <button value="" onclick="location.href = '<?php echo $this->url('perfil'); ?>'" title="Voltar" class="btn btn-primary" name="btnVoltar" type="button">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <ul role="tablist" class="nav nav-tabs" id="myTabs">
+        <li class="active" role="presentation">
+            <a aria-expanded="true" aria-controls="informacao" data-toggle="tab" role="tab" id="informacao-tab" href="#informacao">
+                Informação do Perfil
+            </a>
+        </li>
+        <li role="presentation" class="">
+            <a aria-controls="vincular" data-toggle="tab" id="vincular-tab" role="tab" href="#vincular" aria-expanded="false">
+                Vincular Usuário
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="tabContent">
+        <div aria-labelledby="informacao-tab" id="informacao" class="tab-pane fade active in" role="tabpanel">
+            <?php echo $this->partial('perfil/index/_informacao-perfil'); ?>
+        </div>
+        <div aria-labelledby="vincular-tab" id="vincular" class="tab-pane fade" role="tabpanel">
+            <?php echo $this->partial('perfil/perfil-usuario/_usuario-vinculado'); ?>
+        </div>
+    </div>
+</div>

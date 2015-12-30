@@ -1,0 +1,19 @@
+<?php
+echo $this->headTitle($this->translate('SHOME :: Digite seu nome de usuário e senha'));
+
+echo $this->headLink()->prependStylesheet('/css/module/authentication/login.css');
+?>
+
+<div class="wrapper">
+    <?php echo $this->form()->openTag($this->form); ?>
+    <h2 class="form-signin-heading">Entrar no sistema</h2>
+    <?php
+    echo $this->formElement($this->form->get('dsUsuario'));
+    echo $this->formElement($this->form->get('dsPassword'));
+    ?>
+    <br />
+    <?php
+    echo $this->formElement($this->form->get('submit'));
+    ?>
+    <?php echo $this->form()->closeTag($this->form); ?>
+</div>

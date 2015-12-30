@@ -1,0 +1,59 @@
+<?php
+$strTitle = 'Histórico de reenvio de senha';
+echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
+
+if (!$this->arrResultHist) : ?>
+    <div class="alert alert-warning">
+        <p>Não existem registro</p>
+    </div>
+<?php endif; ?>
+<div class="col-md-12">
+    <div class="pull-right">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <button
+                    onclick="location.href='<?php echo $this->url('pessoa'); ?>'"
+                    title="Voltar"
+                    class="btn btn-primary"
+                    name="btnVoltar"
+                    type="button">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <h3 class="text-center"><?php echo $strTitle; ?></h3>
+    <?php if ($this->arrResultHist) : ?>
+    <table class="ttable table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>E-mail Destinatário</th>
+                <th>E-mail Rementente</th>
+                <th>Título</th>
+                <th>Data de Solicitação</th>
+                <th>Data de Envio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->arrResultHist as $historicoEnvio) :
+                $pessoaFisica = $historicoEnvio->getIdPessoaFisica();
+                $mensageria = $historicoEnvio->getIdMensageriaEmail();
+                $configuracao = $mensageria->getIdConfiguracaoEmail();
+            ?>
+            <tr>
+                <td><?php echo $pessoaFisica->getDsEmail(); ?></td>
+                <td><?php echo $configuracao->getDsEmail(); ?></td>
+                <td><?php echo $mensageria->getDsTitle(); ?></td>
+                <td><?php echo $mensageria->getDatCadastro(); ?></td>
+                <td>
+                    <?php
+                    if ($mensageria->getDatEnvio()) {
+                        echo "a";
+                    }
+                    ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php endif; ?>
+</div>

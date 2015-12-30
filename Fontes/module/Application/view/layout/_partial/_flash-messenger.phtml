@@ -1,0 +1,19 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <?php
+    if ($this->flashMessenger()->hasMessages()) {
+        $arrMessagersContainer = $this->flashMessenger()->getMessages();
+        foreach ($arrMessagersContainer as $arrMessagers) {
+            foreach ($arrMessagers as $strNivel => $arrMessager) {
+                foreach ($arrMessager as $strMessage) {
+                    ?>
+                    <div class="alert alert-<?php echo $strNivel; ?> message-quality" role="alert">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <?php echo $this->translate($strMessage); ?>
+                    </div>
+                    <?php
+                }
+            }
+        }
+    }
+    ?>
+</div>

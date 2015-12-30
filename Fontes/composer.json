@@ -1,0 +1,29 @@
+{
+    "name": "Sistema de Gerenciamento de Constas",
+    "description": "Sistema de Gerenciamento de Constas do Lar",
+    "authors": [
+        {
+            "name": "Ualison Aguiar da Ponte Frota",
+            "email": "ualison.aguiar@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "2.2.*",
+        "phpunit/phpunit": "5.0.4",
+        "doctrine/orm": "2.5.0-alpha2",
+        "doctrine/doctrine-orm-module": "0.8.*",
+        "zendframework/zend-developer-tools": "dev-master"
+    },
+    "require-dev": {
+        "zendframework/zftool": "dev-master",
+        "psr/log": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

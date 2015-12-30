@@ -1,0 +1,19 @@
+<?php
+
+use CoreZend\Util\Format;
+?>
+<?php foreach ($this->register as $arrRegister) : ?>
+    <tr>
+        <td><?php echo $arrRegister[0]->getDsNome(); ?></td>
+        <td><?php echo Format::formatCpfCnpj($arrRegister[0]->getDsCpf()); ?></td>
+        <td><?php echo $arrRegister[0]->getDsEmail(); ?></td>
+        <td><?php echo $arrRegister['dsLogin']; ?></td>
+        <td>
+            <i class="fa fa-edit" title="Editar" data-pessoa="<?php echo $arrRegister[0]->getIdPessoaFisica(); ?>" style="cursor: pointer;"></i>
+            <?php if($arrRegister['dsLogin']) :  ?>
+                <i class="fa fa-mail-forward" title="Reenviar Senha" data-pessoa="<?php echo $arrRegister[0]->getIdPessoaFisica(); ?>" style="cursor: pointer;"></i>
+                <i class="fa fa-list-alt" title="Histório de Reenvio de Senha" data-pessoa="<?php echo $arrRegister[0]->getIdPessoaFisica(); ?>" style="cursor: pointer;"></i>
+            <?php endif;  ?>
+        </td>
+    </tr>
+<?php endforeach; ?>

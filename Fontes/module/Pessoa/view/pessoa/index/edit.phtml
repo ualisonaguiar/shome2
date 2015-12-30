@@ -1,0 +1,76 @@
+<?php
+$strTitle = 'Cadastro de Usuário';
+echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
+?>
+<div class="col-md-12">
+    <h3 class="text-center"><?php echo $strTitle; ?></h3>
+    <div>
+        <?php
+        echo $this->form()->openTag($this->form);
+        ?>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-5">
+            <?php
+            echo $this->formElement($this->form->get('idPessoaFisica'));
+            # nome
+            echo $this->formLabel($this->form->get('dsNome'));
+            echo $this->formElement($this->form->get('dsNome'));
+            ?>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-5">
+            <?php
+            # cpf
+            echo $this->formLabel($this->form->get('dsCpf'));
+            echo $this->formElement($this->form->get('dsCpf'));
+            ?>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-5">
+            <?php
+            # email
+            echo $this->formLabel($this->form->get('dsEmail'));
+            echo $this->formElement($this->form->get('dsEmail'));
+            ?>
+        </div>
+       <div class="clearfix"></div>
+        <br />
+        <div class="col-md-5">
+            <?php
+            # datAniversario
+            echo $this->formLabel($this->form->get('datAniversario'));
+            echo $this->formElement($this->form->get('datAniversario'));
+            ?>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-5">
+            <?php
+            # Login
+            echo $this->formLabel($this->form->get('dsLogin'));
+            echo $this->formElement($this->form->get('dsLogin'));
+            ?>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="pull-right">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <?php
+                    # botao de salvar
+                    echo $this->formElement($this->form->get('btnVoltar'));
+                    ?>
+                </div>
+                <div class="col-md-6">
+                    <?php
+                    # botao de salvar
+                    echo $this->formElement($this->form->get('btnSalvar'));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

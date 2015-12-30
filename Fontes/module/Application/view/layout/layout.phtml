@@ -1,0 +1,121 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('SHOME '. $this->translate('Sistema Financeiro'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->setCharset('UTF-8')
+            ->appendName('author', 'Ualison Aguiar da Ponte Frota')
+            ->appendName('email', 'ualison.aguiar@gmail.com')
+            ->appendName('cache-control', 'no-cache')
+            ->appendName('pragma', 'no-cache')
+            ->appendName('content-language', 'pt-br')
+            ->appendName('content-type', 'text/html; charset=UTF-8')
+            ->appendName('description', 'Sistema de gerencimento comercial da frota da Quality Frotas.')
+            ->appendName('keywords', 'Comercial')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=9,chrome=1');
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath('css/style.css'))
+                ->prependStylesheet($this->basePath('module/corezend/css/library.css'))
+                ->prependStylesheet($this->basePath('vendor/bootstrap/bootstrap-3.0.3/css/bootstrap-theme.min.css'))
+                ->prependStylesheet($this->basePath('vendor/bootstrap/bootstrap-3.0.3/css/bootstrap.min.css'))
+                ->prependStylesheet($this->basePath('vendor/font-awesome/font-awesome-4.3.0/css/font-awesome.min.css'))
+                ->prependStylesheet($this->basePath('vendor/font-awesome/font-awesome-4.3.0/css/font-awesome.min.css'))
+                ->prependStylesheet($this->basePath('vendor/jquery-ui/jquery-ui-1.11.2/jquery-ui.min.css'))
+                ->prependStylesheet($this->basePath('vendor/jquery-ui/jquery-ui-1.11.2/jquery-ui.structure.min.css'))
+                ->prependStylesheet($this->basePath('vendor/jquery-ui/jquery-ui-1.11.2/jquery-ui.min.css'));
+        ?>
+
+        <script type="text/javascript">
+            var strGlobalBasePath = "<?php echo $this->basePath(); ?>";
+        </script>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+            ->prependFile($this->basePath('module/corezend/js/library.js'))
+            ->prependFile($this->basePath('module/corezend/js/include.js'))
+            ->prependFile($this->basePath('vendor/jquery-mask/jquery-mask-1.7.7/js/jquery.mask.min.js'))
+            ->prependFile($this->basePath('vendor/bootstrap/bootstrap-3.0.3/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('vendor/jquery-base64/jquery-base64/jquery.base64.js'))
+            ->prependFile($this->basePath('vendor/jquery-validate/jquery-validate-1.14.0/js/jquery.validate.min.js'))
+            ->prependFile($this->basePath('vendor/jquery-ui/jquery-ui-1.11.2/jquery-ui.min.js'))
+            ->prependFile($this->basePath('vendor/jquery/jquery-2.1.4/js/jquery.min.js'))
+            //->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('vendor/html5/html5-3.7.2/js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="<?php echo $this->url('home'); ?>" class="navbar-brand" alt="Sistema Financeiro"/>&nbsp;<?php echo $this->translate('Sistema Financeiro') ?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <?php if ($this->authentication()->hasIdentity()) :
+                        $dataPessoaFisica = $this->authentication()->getIdentity()->pessoaFisica;
+                        echo $this->navigation('navigation')
+                            ->menu()
+                            ->setUlClass('nav navbar-nav menu-navigation');
+                    ?>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown pull-left">
+                                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <i class="fa fa-user">&nbsp;<?php echo $dataPessoaFisica->dsNome; ?></i>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Administrador</a></li>
+                                    <li><a href="#"><i class="fa fa-key">&nbsp;Alterar Senha</i></a></li>
+                                    <li><a href="#"><i class="fa fa-pencil-square-o">&nbsp;Alterar Dados</i></a></li>
+                                    <li class="divider" role="separator"></li>
+                                    <li>
+                                        <a href="<?php echo $this->url('authentication', array('action' => 'logoff')) ?>">
+                                            <i class="fa fa-sign-out">&nbsp;Sair</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            <?php
+            if ($this->authentication()->hasIdentity()) :
+            ?>
+            <div class="breadcrumb">
+                <?php
+                echo $this->navigation('navigation')
+                    ->breadcrumbs()
+                    ->setLinkLast(true)
+                    ->setMinDepth(0)
+                    ->setRenderInvisible(true)
+                    ->setSeparator(' / ' . PHP_EOL);
+                ?>
+            </div>
+            <?php
+            endif;
+            echo $this->partial('layout/_partial/_flash-messenger');
+            echo $this->content;
+            ?>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

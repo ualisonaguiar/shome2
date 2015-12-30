@@ -1,0 +1,22 @@
+<?php
+use Application\Entity\Perfil as PerfilEnity;
+
+foreach ($this->register as $register) :
+    $strClass = 'fa-plus-circle';
+    if ($register->getInAtivo() == PerfilEnity::CO_STATUS_ATIVO) {
+        $strClass = 'fa-minus-circle';
+    }
+    ?>
+    <tr>
+        <td><?php echo $register->getNoPerfil(); ?></td>
+        <td><?php echo $register->getIdLogin()->count(); ?></td>
+        <td><?php echo $register->getIdAcao()->count(); ?></td>
+        <td><?php echo PerfilEnity::$arrSituacao[$register->getInAtivo()]; ?></td>
+        <td>
+            <i class="fa fa-edit" title="Editar" data-perfil="<?php echo $register->getIdPerfil(); ?>" style="cursor: pointer;"></i>
+            <i class="fa <?php echo $strClass; ?> alterar-situacao" title="Alterar Situação" data-perfil="<?php echo $register->getIdPerfil(); ?>" style="cursor: pointer;"></i>
+            <i class="fa fa-users" title="Vincular Usuário" data-perfil="<?php echo $register->getIdPerfil(); ?>" style="cursor: pointer;"></i>
+            <i class="fa fa-tasks" title="Vincular Ações" data-perfil="<?php echo $register->getIdPerfil(); ?>" style="cursor: pointer;"></i>
+        </td>
+    </tr>
+<?php endforeach; ?>

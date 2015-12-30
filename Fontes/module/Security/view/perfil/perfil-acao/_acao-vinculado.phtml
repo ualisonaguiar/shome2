@@ -1,0 +1,72 @@
+<?php
+use Application\Entity\Acao as AcaoEntity;
+?>
+<div class="col-lg-10">
+    <br /><br />
+    <?php
+    if ($this->perfil->getIdAcao()->count()) {
+        $arrAcao = array();
+        foreach ($this->perfil->getIdAcao() as $acaoPerfil) {
+            if ($acaoPerfil->getIdAcaoSuperior()) {
+                $acaoSuperior = $acaoPerfil->getIdAcaoSuperior();
+                if ($acaoSuperior->getIdAcaoSuperior()) {
+                    $strLabel = $acaoSuperior->getIdAcaoSuperior()->getDsLabel() . ' / ' . $acaoSuperior->getDsLabel();
+                } else {
+                    $strLabel = $acaoSuperior->getDsLabel();
+                }
+                $strLabel .= ' / ' . $acaoPerfil->getDsLabel();
+            } else {
+                $strLabel = $acaoPerfil->getDsLabel();
+            }
+            $arrAcao[$strLabel] = array(
+                'id' => $acaoPerfil->getIdAcao(),
+                'visivel' => $acaoPerfil->getInVisible(),
+                'url' => $acaoPerfil->getDsRoute() . (($acaoPerfil->getDsAction() == '/') ? '' : '/' . $acaoPerfil->getDsAction())
+            );
+        }
+    }
+    echo $this->form()->openTag($this->formVinculo);
+    # hidden perfil
+    echo $this->formElement($this->formVinculo->get('idPerfil'));
+    # nome
+    echo $this->formLabel($this->formVinculo->get('idAcao'));
+    echo $this->formElement($this->formVinculo->get('idAcao'));
+    # botao de incluir
+    echo "<br />";
+    echo $this->formElement($this->formVinculo->get('btnVincular'));
+    ?>
+    <div class="clearfix"></div>
+    <br />
+    <hr>
+    <div id="usuarioVinculado" class="<?php echo (!$this->perfil->getIdAcao()->count()) ? 'hide' : '' ?>">
+        <label><p>Ação que já estão vinculados ao perfil.</p></label>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Nome Ação</th>
+                    <th>Visível</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($arrAcao as $strNome => $arrConfigAcao) :
+                    ?>
+                    <tr>
+                        <td><?php echo $strNome; ?></td>
+                        <td><?php echo AcaoEntity::$arrSituacao[$arrConfigAcao['visivel']]; ?></td>
+                        <td>
+                            <i class="fa fa-remove" data-acao="<?php echo $arrConfigAcao['id']; ?>" title="Remover Vínculo" style="cursor: pointer"></i>
+                        </td>
+                    </tr>
+                    <?php
+                endforeach;
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<br />
+<?php
+$this->headScript()->prependFile($this->basePath('module/perfil/js/vincular-acao.js'));
