@@ -1,0 +1,53 @@
+Nome      : Casa Estância
+Endereço  : Estância 01 Módulo O Casa 32 A, Planaltina DF
+Observação: d
+Situação  : Ativo
+
+Projeto
+  Descrição
+    Nome: Construção da Casa
+    Data Inicial: 23/02/2013
+    Data Final: 23/02/2016
+
+  Material
+    Líder Material de Construção
+	Data Compra: 12/05/2014
+	Quantidade: 100
+	Produto: Saco Cimento
+	Valor Unitário: R$ 21,00
+	Valor Total: R$ 2100,00
+	Anexo
+
+  Mão de Obra
+    Diária
+      Data		Profissional	Valor		Pago	Data Pagamento	Observação	Anexo
+      12/05/2015	Gino		R$ 120,00	Ok	12/05/2015
+      12/05/2015	Nildo		R$ 120,00	Ok	12/05/2015
+    Empeileita
+      Nome: Reboco Mestre Zé
+      Valor: R$ 6500,00
+	Pagamento:
+	  Data		Valor		Pago	Data Pagamento	Observação	Anexo
+	  12/05/2015 	R$ 2000,00	Ok	12/05/2015
+	  12/06/2015	R$ 2000,00
+
+  Diário de Obra
+      Data: 12/05/2015
+      Diário: Criação das vigas e pilares
+      Profissional: Gino, Nildo
+      Empeileita: Mestre Zé
+      Material: 10 Sacos de cimento
+      Tempo: Nublado
+      Anexo
+
+  Resumo
+      Material
+	Empresa				Valor		Valor Pago
+	Lider Material de Construção	R$ 2100,00	R$ 2100,00
+      Mão de Obra:
+	Tipo			Descrição				Valor		Valor Pago
+	Profissional		Gino					R$ 240,00	R$ 240,00
+	Profissional		Nildo					R$ 240,00	R$ 240,00
+	Empeileita		Reboco Mestre Zé			R$ 6500,00	R$ 4000,00
+      Valor Total: R$ 6980,00
+
