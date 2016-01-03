@@ -8,8 +8,12 @@ class ManterPessoa extends FormGenerator
 {
     public function prepareElementForm($booRequiered)
     {
-        $this->setAttribute('name', 'formPessoaFisica');
-        $this->setAttributes(array('class' => 'form-horizontal'));
+        $this->setAttributes(
+            array(
+                'class' => 'form-horizontal',
+                'name' => 'formPessoaFisica'
+            )
+        );
         # id pessoa fisica
         $this->addHidden('idPessoaFisica', array('id' => 'idPessoaFisica'));
         # Nome

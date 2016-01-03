@@ -5,6 +5,19 @@ namespace Obra;
 return array(
     'router' => array(
         'routes' => array(
+            'empreendimento-obra' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/empreendimento-obra[/:action][/:idPessoaFisica]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z-]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Empreendimento\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             'projeto-obra' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -22,7 +35,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Projeto\Controller\Index' => 'Projeto\Controller\IndexController'
+            'Projeto\Controller\Index' => 'Projeto\Controller\IndexController',
+            'Empreendimento\Controller\Index' => 'Empreendimento\Controller\IndexController',
         ),
     ),
     'view_manager' => array(

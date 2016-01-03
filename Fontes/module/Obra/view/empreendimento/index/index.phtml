@@ -1,0 +1,71 @@
+<?php
+$strTitle = 'Listagem de Empreendimento';
+echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
+?>
+<div class="col-md-12">
+    <h3 class="text-center"><?php echo $strTitle; ?></h3>
+    <div>
+        <?php
+        echo $this->form()->openTag($this->form);
+        ?>
+        <div class="pull-right">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <?php
+                    # botao de cadastrar
+                    echo $this->formElement($this->form->get('btnCadastro'));
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-10">
+            <div class="col-md-10">
+                <?php
+                # dsEmpreendimento
+                echo $this->formLabel($this->form->get('dsEmpreendimento'));
+                echo $this->formElement($this->form->get('dsEmpreendimento'));
+                ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <?php
+                # coEstado
+                echo $this->formLabel($this->form->get('coEstado'));
+                echo $this->formElement($this->form->get('coEstado'));
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?php
+                # coMunicipio
+                echo $this->formLabel($this->form->get('coMunicipio'));
+                echo $this->formElement($this->form->get('coMunicipio'));
+                ?>
+            </div>
+            <div class="col-md-6">
+                <?php
+                # dsBairro
+                echo $this->formLabel($this->form->get('dsBairro'));
+                echo $this->formElement($this->form->get('dsBairro'));
+                ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-md-10">
+            <div class="col-md-5">
+                <?php
+                # coCep
+                echo $this->formLabel($this->form->get('coCep'));
+                echo $this->formElement($this->form->get('coCep'));
+                ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+    </div>
+</div>

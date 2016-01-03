@@ -111,11 +111,11 @@ return array(
             ),
             array(
                 'label' => 'Construcao',
-                'route' => 'projeto-obra',
+                'route' => 'empreendimento-obra',
                 'pages' => array(
                     array(
-                        'label' => 'Projeto',
-                        'route' => 'projeto-obra',
+                        'label' => 'Empreendimento',
+                        'route' => 'empreendimento-obra',
                         'action' => 'index',
                     ),
                 )

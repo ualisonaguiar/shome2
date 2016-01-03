@@ -14,6 +14,7 @@ class Module
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
+                    'Empreendimento' => __DIR__ . '/src/Empreendimento',
                     'Projeto' => __DIR__ . '/src/Projeto',
                 ),
             ),

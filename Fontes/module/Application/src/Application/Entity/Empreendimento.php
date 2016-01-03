@@ -45,7 +45,7 @@ class Empreendimento
     /**
      * @var string $dsBairro
      *
-     * @ORM\Column(name="ds_bairro", type="string", length=1000, nullable=false)
+     * @ORM\Column(name="ds_bairro", type="string", length=100, nullable=false)
      */
     private $dsBairro;
 
@@ -81,7 +81,7 @@ class Empreendimento
     /**
      * Get idEmpreendimento
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdEmpreendimento()
     {
@@ -103,7 +103,7 @@ class Empreendimento
     /**
      * Get idMunicipio
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdMunicipio()
     {
@@ -125,7 +125,7 @@ class Empreendimento
     /**
      * Get dsEmpreendimento
      *
-     * @return string 
+     * @return string
      */
     public function getDsEmpreendimento()
     {
@@ -147,7 +147,7 @@ class Empreendimento
     /**
      * Get dsLogradouro
      *
-     * @return string 
+     * @return string
      */
     public function getDsLogradouro()
     {
@@ -169,7 +169,7 @@ class Empreendimento
     /**
      * Get dsBairro
      *
-     * @return string 
+     * @return string
      */
     public function getDsBairro()
     {
@@ -191,7 +191,7 @@ class Empreendimento
     /**
      * Get dsComplemento
      *
-     * @return string 
+     * @return string
      */
     public function getDsComplemento()
     {
@@ -213,7 +213,7 @@ class Empreendimento
     /**
      * Get coCep
      *
-     * @return string 
+     * @return string
      */
     public function getCoCep()
     {
@@ -235,7 +235,7 @@ class Empreendimento
     /**
      * Get inSituacao
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getInSituacao()
     {
@@ -257,7 +257,7 @@ class Empreendimento
     /**
      * Get dsObservacao
      *
-     * @return text 
+     * @return text
      */
     public function getDsObservacao()
     {
