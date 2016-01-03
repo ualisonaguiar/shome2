@@ -109,11 +109,17 @@ return array(
                     ),
                 )
             ),
-//            array(
-//                'label' => 'Construcao',
-//                'route' => 'contrucao-casa',
-//                //'pages' => array()
-//            ),
+            array(
+                'label' => 'Construcao',
+                'route' => 'projeto-obra',
+                'pages' => array(
+                    array(
+                        'label' => 'Projeto',
+                        'route' => 'projeto-obra',
+                        'action' => 'index',
+                    ),
+                )
+            ),
         ),
     )
 );

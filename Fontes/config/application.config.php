@@ -14,7 +14,8 @@ return array(
         'CoreZend',
         'Application',
         'Security',
-        'Pessoa'
+        'Pessoa',
+        'Obra',
     ),
     'module_listener_options' => array(
         'module_paths' => array(

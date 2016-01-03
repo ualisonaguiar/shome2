@@ -5,15 +5,15 @@ namespace Obra;
 return array(
     'router' => array(
         'routes' => array(
-            'obra' => array(
+            'projeto-obra' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/diario-obra[/:action][/:idPessoaFisica]',
+                    'route' => '/projeto-obra[/:action][/:idPessoaFisica]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z-]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Pessoa\Controller\Index',
+                        'controller' => 'Projeto\Controller\Index',
                         'action' => 'index',
                     ),
                 ),
@@ -22,7 +22,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Pessoa\Controller\Index' => 'Pessoa\Controller\IndexController'
+            'Projeto\Controller\Index' => 'Projeto\Controller\IndexController'
         ),
     ),
     'view_manager' => array(
