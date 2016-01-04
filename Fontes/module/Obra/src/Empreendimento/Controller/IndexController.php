@@ -21,4 +21,11 @@ class IndexController extends AbstractCrudController
         $form->prepareElementSearch();
         return new ViewModel(['form' => $form]);
     }
+
+    public function ajaxListagemAction()
+    {
+        $form = new ManterEmpreendimentoForm();
+        $form->prepareElementSearch();
+        return $this->ajaxListagem($form, 'Obra/view/_partial/listagem.phtml');
+    }
 }

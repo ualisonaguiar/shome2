@@ -54,6 +54,11 @@ class AbstractCrudController extends AbstractController
         $strHtml = '';
         if ($request->isPost()) {
             $form->setData($request->getPost()->toArray());
+
+            $form->isValid();
+
+            var_dump($form->getMessages());die;
+
             if ($form->isValid()) {
                 $arrRegistro = $this->getService()->getListagem($form->getData());
                 $strHtml = $this->renderTemplatePath($strPartial, $arrRegistro);

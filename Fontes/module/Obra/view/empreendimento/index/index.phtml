@@ -67,5 +67,23 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
         </div>
         <div class="clearfix"></div>
         <br />
+        <div class="pull-right">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <?php
+                    # botao de limpar
+                    echo $this->formElement($this->form->get('btnClear'));
+                    ?>
+                </div>
+                <div class="col-md-6">
+                    <?php
+                    # botao de salvar
+                    echo $this->formElement($this->form->get('btnPesquisar'));
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<?php
+$this->headScript()->prependFile($this->basePath('module/obra/js/listagem.js'));

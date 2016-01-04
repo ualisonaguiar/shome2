@@ -117,5 +117,34 @@ class ManterEmpreendimento extends FormGenerator
 //                'label' => 'CPF Responsável do Empreendimento:'
 //            )
 //        );
+        # botao de limpar
+        $this->addButton(
+            'btnClear',
+            array(
+                'id' => 'btnClear',
+                'type'  => 'button',
+                'class' => 'btn btn-default',
+                'title' => 'Limpar'
+            ),
+            array(
+                'label' => 'Limpar',
+                'label_options' => array('disable_html_escape' => true,)
+            )
+        );
+        # botao de pesquisa
+        $this->addButton(
+            'btnPesquisar',
+            array(
+                'id' => 'btnPesquisar',
+                'type'  => 'button',
+                'class' => 'btn btn-info',
+                'title' => 'Pesquisar'
+            ),
+            array(
+                'label' => 'Pesquisar',
+                'label_options' => array('disable_html_escape' => true,)
+            )
+        );
+        $this->setInputFilter(new ManterEmpreendimentoFilter(__FUNCTION__));
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Obra;
 
+use Empreendimento\Service\Empreendimento as EmpreendimentoService;
+
 class Module
 {
     public function getConfig()
@@ -25,6 +27,9 @@ class Module
     {
         return array(
             'factories' => array(
+                'Empreendimento\Service\Empreendimento' => function ($service) {
+                    return new EmpreendimentoService($service->get('Doctrine\ORM\EntityManager'));
+                },
             )
         );
     }
