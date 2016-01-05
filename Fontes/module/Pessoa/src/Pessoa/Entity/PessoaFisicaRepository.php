@@ -56,7 +56,6 @@ class PessoaFisicaRepository extends EntityRepository
                 ->setParameter('dsLogin', $arrData['dsLogin']);
         }
         $query = $queryBuilder->getQuery();
-
         $registerPaginator = new Paginator($query);
         $registerPaginator->setUseOutputWalkers(false);
         $intCountResult    = $registerPaginator->count();

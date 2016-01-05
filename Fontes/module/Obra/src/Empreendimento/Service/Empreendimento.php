@@ -3,11 +3,10 @@
 namespace Empreendimento\Service;
 
 use CoreZend\Service\AbstractServiceRepository;
+use Application\Entity\Empreendimento as EmpreendimentoEntity;
 
 class Empreendimento extends AbstractServiceRepository
 {
-    use Message;
-
     public function __construct($entityManager)
     {
         parent::__construct($entityManager, __NAMESPACE__);
@@ -15,10 +14,17 @@ class Empreendimento extends AbstractServiceRepository
         $this->strPk = 'idEmpreendimento';
     }
 
-    public function getListagem($arrDataPost)
+    public function save()
     {
-
-        die('sa');
-
+        $empreendimento = new EmpreendimentoEntity();
+        $empreendimento->setCoCep('73350303')
+            ->setDsBairro('Planaltina')
+            ->setDsComplemento('32A')
+            ->setDsEmpreendimento('Casa da Estância')
+            ->setDsLogradouro('Quadra 03 Conjunto C')
+            ->setIdMunicipio(530021)
+            ->setInSituacao(1);
+        $this->getEntityManager()->persist($empreendimento);
+        $this->getEntityManager()->flush();
     }
 }

@@ -85,5 +85,25 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
         </div>
     </div>
 </div>
+<div class="listagem hide">
+    <div class="clearfix"></div>
+    <br />
+    <table id="tableListagem" class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                    <i class="fa fa-sort-asc" style="color: #003bb3;"></i>
+                </th>
+                <th>Bairro</th>
+                <th>Estado</th>
+                <th>Municipio</th>
+                <th>Situação</th>
+                <th class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
 <?php
-$this->headScript()->prependFile($this->basePath('module/obra/js/listagem.js'));
+$this->headScript()->prependFile($this->basePath('module/obra/js/listagem-empreendimento.js'));

@@ -11,6 +11,7 @@ class ManterEmpreendimentoFilter extends FilterValidator
     {
         switch ($strFunction) {
             case 'prepareElementSearch':
+                $this->filterElementSearch();
                 break;
         }
     }

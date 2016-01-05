@@ -1,0 +1,12 @@
+<?php
+
+foreach ($this->register as $register) : ?>
+    <tr>
+        <td><?php echo $register->getDsEmpreendimento(); ?></td>
+        <td><?php echo $register->getDsBairro(); ?></td>
+        <td></td>
+        <td></td>
+        <td><?php echo $register->getSituacao(); ?></td>
+        <td></td>
+    </tr>
+<?php endforeach; ?>

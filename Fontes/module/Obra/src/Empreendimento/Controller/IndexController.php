@@ -26,6 +26,6 @@ class IndexController extends AbstractCrudController
     {
         $form = new ManterEmpreendimentoForm();
         $form->prepareElementSearch();
-        return $this->ajaxListagem($form, 'Obra/view/_partial/listagem.phtml');
+        return $this->ajaxListagem($form, 'Obra/view/empreendimento/_partial/listagem.phtml');
     }
 }

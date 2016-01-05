@@ -8,10 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
  * Application\Entity\Empreendimento
  *
  * @ORM\Table(name="tb_empreendimento")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Empreendimento\Entity\EmpreendimentoRepository")
  */
 class Empreendimento
 {
+    const co_situacao_ativo = 1;
+    const co_situacao_inativo = 2;
+
+    static $arrSituacao = array(
+        self::co_situacao_ativo => 'Ativo',
+        self::co_situacao_inativo => 'Inativo'
+    );
+
+
     /**
      * @var integer $idEmpreendimento
      *
@@ -262,5 +271,10 @@ class Empreendimento
     public function getDsObservacao()
     {
         return $this->dsObservacao;
+    }
+
+    public function getSituacao()
+    {
+        return self::$arrSituacao[$this->getInSituacao()];
     }
 }
