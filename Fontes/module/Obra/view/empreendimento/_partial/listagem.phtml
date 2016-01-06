@@ -1,12 +1,20 @@
 <?php
+use Application\Entity\Empreendimento as EmpreendimentoEntity;
 
 foreach ($this->register as $register) : ?>
     <tr>
         <td><?php echo $register->getDsEmpreendimento(); ?></td>
         <td><?php echo $register->getDsBairro(); ?></td>
-        <td></td>
-        <td></td>
+        <td><?php echo $register->getIdMunicipio()->getIdEstado()->getDsSigla(); ?></td>
+        <td><?php echo $register->getIdMunicipio()->getDsNome(); ?></td>
         <td><?php echo $register->getSituacao(); ?></td>
-        <td></td>
+        <td>
+            <i class="fa fa-edit" title="Editar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
+            <?php if ($register->getSituacao()) : ?>
+                <i class="fa fa-toggle-on" title="Inativar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
+            <?php else : ?>
+                <i class="fa fa-toggle-off" title="Ativar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
+            <?php endif; ?>
+        </td>
     </tr>
 <?php endforeach; ?>

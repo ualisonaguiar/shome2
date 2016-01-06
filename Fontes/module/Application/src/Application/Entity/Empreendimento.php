@@ -31,9 +31,12 @@ class Empreendimento
     private $idEmpreendimento;
 
     /**
-     * @var integer $idMunicipio
+     * @var Application\Entity\Municipio
      *
-     * @ORM\Column(name="id_municipio", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Municipio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_municipio", referencedColumnName="id_municipio")
+     * })
      */
     private $idMunicipio;
 
@@ -97,13 +100,14 @@ class Empreendimento
         return $this->idEmpreendimento;
     }
 
+
     /**
-     * Set idMunicipio
+     * Set idEstado
      *
-     * @param integer $idMunicipio
-     * @return TbEmpreendimento
+     * @param Application\Entity\Estado $idMunicipio
+     * @return Municipio
      */
-    public function setIdMunicipio($idMunicipio)
+    public function setIdMunicipio(\Application\Entity\Municipio $idMunicipio)
     {
         $this->idMunicipio = $idMunicipio;
         return $this;

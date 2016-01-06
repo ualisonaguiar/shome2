@@ -12,6 +12,18 @@ class EmpreendimentoRepository extends EntityRepository
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder->select('Empreendimento')
             ->from('Application\Entity\Empreendimento', 'Empreendimento')
+            ->innerJoin(
+                'Application\Entity\Municipio',
+                'Municipio',
+                'with',
+                'Municipio.idMunicipio = Empreendimento.idMunicipio'
+            )
+            ->innerJoin(
+                'Application\Entity\Estado',
+                'Estado',
+                'with',
+                'Estado.idEstado = Municipio.idEstado'
+            )
             ->setMaxResults($intQtdPage)
             ->setFirstResult($intPage * ($intPage - 1))
             ->orderBy('Empreendimento.dsEmpreendimento', 'asc');
