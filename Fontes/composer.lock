@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6281a6869f724e0acc567ada6ef1295d",
+    "hash": "961b3a0329adff385dbeae2684773840",
     "content-hash": "766a48b82df6119cb5839437ff3cd5c5",
     "packages": [
         {
@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "619c3d4910205255c6cc637adb97fec16eaca532"
+                "reference": "6e52f02186bd4bd2ff80537350e730af154cc332"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/619c3d4910205255c6cc637adb97fec16eaca532",
-                "reference": "619c3d4910205255c6cc637adb97fec16eaca532",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/6e52f02186bd4bd2ff80537350e730af154cc332",
+                "reference": "6e52f02186bd4bd2ff80537350e730af154cc332",
                 "shasum": ""
             },
             "require": {
@@ -143,7 +143,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-12-25 12:33:13"
+            "time": "2015-12-30 19:51:35"
         },
         {
             "name": "doctrine/collections",
