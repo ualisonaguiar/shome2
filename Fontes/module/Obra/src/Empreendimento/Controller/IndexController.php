@@ -17,8 +17,10 @@ class IndexController extends AbstractCrudController
 
     public function indexAction()
     {
+        $arrEstado = $this->getService('Empreendimento\Service\Estado')
+            ->fetchPairs('getIdEstado', 'getDsSigla', array(),array('dsSigla' => 'asc'));
         $form = new ManterEmpreendimentoForm();
-        $form->prepareElementSearch();
+        $form->prepareElementSearch($arrEstado);
         return new ViewModel(['form' => $form]);
     }
 

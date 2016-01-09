@@ -6,7 +6,7 @@ use CoreZend\Form\FormGenerator;
 
 class ManterEmpreendimento extends FormGenerator
 {
-    public function prepareElementSearch()
+    public function prepareElementSearch($arrEstado)
     {
         $this->setAttributes(
             array(
@@ -54,7 +54,7 @@ class ManterEmpreendimento extends FormGenerator
             array(
                 'label' => 'Estado:',
                 'empty_option' => 'Selecione',
-                'value_options' => array(),
+                'value_options' => $arrEstado,
             )
         );
         # Municipio
