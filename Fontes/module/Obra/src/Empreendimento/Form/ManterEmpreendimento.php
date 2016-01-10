@@ -147,7 +147,7 @@ class ManterEmpreendimento extends FormGenerator
         );
         $this->setInputFilter(new ManterEmpreendimentoFilter(__FUNCTION__));
     }
-    
+
     public function prepareElementManter(array $arrEstado, $booRequired = true)
     {
         $this->addHidden('idEmpreendimento', array('id' => 'idEmpreendimento', 'required' => $booRequired));
@@ -195,7 +195,7 @@ class ManterEmpreendimento extends FormGenerator
             array(
                 'label' => 'Logradouro:'
             )
-        );        
+        );
         # bairro
         $this->addText(
             'dsBairro',
@@ -210,7 +210,7 @@ class ManterEmpreendimento extends FormGenerator
             array(
                 'label' => 'Bairro:'
             )
-        );        
+        );
         # complemento
         $this->addText(
             'dsComplemento',
@@ -225,7 +225,7 @@ class ManterEmpreendimento extends FormGenerator
             array(
                 'label' => 'Complemento/Número da Casa:'
             )
-        );        
+        );
         # Estado
         $this->addSelect(
             'coEstado',
@@ -241,7 +241,7 @@ class ManterEmpreendimento extends FormGenerator
                 'value_options' => $arrEstado,
                 'disable_inarray_validator' => true
             )
-        ); 
+        );
         # Municipio
         $this->addSelect(
             'coMunicipio',
@@ -287,7 +287,7 @@ class ManterEmpreendimento extends FormGenerator
         );
         $this->setInputFilter(new ManterEmpreendimentoFilter(__FUNCTION__));
     }
-    
+
     public function setData($mixEmpreendimento, $serviceMunicipio = null)
     {
         if (is_object($mixEmpreendimento)) {
@@ -298,12 +298,14 @@ class ManterEmpreendimento extends FormGenerator
                     'getDsNome',
                     array('idEstado' => $mixEmpreendimento->getIdMunicipio()->getIdEstado()->getIdEstado())
                 );
-            
-            $this->get('coMunicipio')->setAttribute('value_options', $arrDataMunicipio);
+            $municipio = $this->getElements()['coMunicipio'];
+            $municipio->setOptions(array(
+                'value_options' => $arrDataMunicipio
+            ));
             $arrData['coEstado'] = $mixEmpreendimento->getIdMunicipio()->getIdEstado()->getIdEstado();
             $arrData['coMunicipio'] = $mixEmpreendimento->getIdMunicipio()->getIdMunicipio();
             return parent::setData($arrData);
-        }        
+        }
         return parent::setData($mixEmpreendimento);
     }
 }

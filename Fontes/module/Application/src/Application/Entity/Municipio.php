@@ -97,7 +97,7 @@ class Municipio
      */
     public function getDsNome()
     {
-        return utf8_encode($this->dsNome);
+        return $this->dsNome;
     }
 
     /**

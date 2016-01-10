@@ -27,6 +27,10 @@ class EmpreendimentoRepository extends EntityRepository
             ->setMaxResults($intQtdPage)
             ->setFirstResult($intPage * ($intPage - 1))
             ->orderBy('Empreendimento.dsEmpreendimento', 'asc');
+
+\Zend\Debug\Debug::dump($arrData);
+die;
+
         $query = $queryBuilder->getQuery();
         $registerPaginator = new Paginator($query);
         $registerPaginator->setUseOutputWalkers(false);

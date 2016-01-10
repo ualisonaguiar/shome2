@@ -7,13 +7,14 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
     <div>
         <?php
         echo $this->form()->openTag($this->form);
+        echo $this->formElement($this->form->get('idEmpreendimento'));
         ?>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-8">
                 <?php
                 echo $this->formLabel($this->form->get('dsEmpreendimento'));
                 echo $this->formElement($this->form->get('dsEmpreendimento'));
-                ?>                
+                ?>
             </div>
         </div>
         <br />
@@ -22,19 +23,19 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
                 <?php
                 echo $this->formLabel($this->form->get('coCep'));
                 echo $this->formElement($this->form->get('coCep'));
-                ?>                
+                ?>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <?php
                 echo $this->formLabel($this->form->get('coEstado'));
                 echo $this->formElement($this->form->get('coEstado'));
-                ?>                
+                ?>
             </div>
             <div class="col-xs-5 col-sm-5 col-md-5">
                 <?php
                 echo $this->formLabel($this->form->get('coMunicipio'));
                 echo $this->formElement($this->form->get('coMunicipio'));
-                ?>                
+                ?>
             </div>
         </div>
         <br />
@@ -43,7 +44,7 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
                 <?php
                 echo $this->formLabel($this->form->get('dsLogradouro'));
                 echo $this->formElement($this->form->get('dsLogradouro'));
-                ?>                
+                ?>
             </div>
         </div>
         <br />
@@ -52,13 +53,13 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
                 <?php
                 echo $this->formLabel($this->form->get('dsBairro'));
                 echo $this->formElement($this->form->get('dsBairro'));
-                ?>                
+                ?>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <?php
                 echo $this->formLabel($this->form->get('dsComplemento'));
                 echo $this->formElement($this->form->get('dsComplemento'));
-                ?>                
+                ?>
             </div>
         </div>
         <br />
