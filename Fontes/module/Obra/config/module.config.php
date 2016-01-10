@@ -8,9 +8,10 @@ return array(
             'empreendimento-obra' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/empreendimento-obra[/:action][/:idPessoaFisica]',
+                    'route' => '/empreendimento-obra[/:action][/:idEmpreendimento]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z-]+',
+                        'idEmpreendimento' => '[0-9]+'
                     ),
                     'defaults' => array(
                         'controller' => 'Empreendimento\Controller\Index',
@@ -46,6 +47,9 @@ return array(
         'strategies' => array(
             'ViewJsonStrategy',
         ),
+        'template_map' => array(
+            'obra/empreendimento/listagem' => __DIR__ . '/../view/empreendimento/_partial/listagem.phtml'
+        )        
     ),
     'console' => array(
         'router' => array(

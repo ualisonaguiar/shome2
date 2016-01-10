@@ -38,7 +38,10 @@ trait FlashMessenger
 
     protected function addMessageGeneric($strMessage, $strTypeMessage = FlashMessengerZend::NAMESPACE_DEFAULT)
     {
-        $arrMessage = end($this->getFlashMessenger()->getMessages());
+        $arrMessage = [];
+        if ($this->getFlashMessenger()->getMessages()) {
+            $arrMessage = end($this->getFlashMessenger()->getMessages());
+        }
         $arrMessage[$strTypeMessage][] = $strMessage;
         $this->getFlashMessenger()->addMessage($arrMessage);
         return $this->getFlashMessenger();

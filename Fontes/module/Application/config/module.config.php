@@ -25,6 +25,32 @@ return array(
                     ),
                 ),
             ),
+            'application-municipio' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/application-municipio[/:idEstado]',
+                    'constraints' => array(
+                        'idEstado' => '[0-9]+',
+                    ),                    
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Endereco',
+                        'action'     => 'getListaMunicipio',
+                    ),
+                ),
+            ),            
+            'application-cep' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/application-cep',
+                    'constraints' => array(
+                        'idEstado' => '[0-9]+',
+                    ),                    
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Endereco',
+                        'action'     => 'getEnderecoCep',
+                    ),
+                ),
+            ),            
         ),
     ),
     'service_manager' => array(
@@ -49,7 +75,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Endereco' => 'Application\Controller\EnderecoController',
         ),
     ),
     'view_manager' => array(
@@ -67,6 +94,9 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+        'strategies' => array(
+            'ViewJsonStrategy',
+        ),        
     ),
     'doctrine' => array(
         'driver' => array(

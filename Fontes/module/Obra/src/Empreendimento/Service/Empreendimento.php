@@ -4,6 +4,7 @@ namespace Empreendimento\Service;
 
 use CoreZend\Service\AbstractServiceRepository;
 use Application\Entity\Empreendimento as EmpreendimentoEntity;
+use CoreZend\Util\Format;
 
 class Empreendimento extends AbstractServiceRepository
 {
@@ -14,16 +15,20 @@ class Empreendimento extends AbstractServiceRepository
         $this->strPk = 'idEmpreendimento';
     }
 
-    public function save()
+    public function save($arrData)
     {
-        $empreendimento = new EmpreendimentoEntity();
-        $empreendimento->setCoCep('73350303')
-            ->setDsBairro('Planaltina')
-            ->setDsComplemento('32A')
-            ->setDsEmpreendimento('Casa da Estância')
-            ->setDsLogradouro('Quadra 03 Conjunto C')
-            ->setIdMunicipio(530021)
-            ->setInSituacao(1);
+        if ($arrData['idEmpreendimento']) {
+            $empreendimento = $this->find($arrData['idEmpreendimento']);
+        } else {
+            $empreendimento = new EmpreendimentoEntity();
+        }
+        $empreendimento->setCoCep(Format::clearMask($arrData['coCep']))
+            ->setDsBairro($arrData['dsBairro'])
+            ->setDsComplemento($arrData['dsComplemento'])
+            ->setDsEmpreendimento($arrData['dsEmpreendimento'])
+            ->setDsLogradouro($arrData['dsLogradouro'])
+            ->setIdMunicipio($this->getReferenceEntity($arrData['coMunicipio'], 'Application\Entity\Municipio'))
+            ->setInSituacao(EmpreendimentoEntity::co_situacao_ativo);
         $this->getEntityManager()->persist($empreendimento);
         $this->getEntityManager()->flush();
     }

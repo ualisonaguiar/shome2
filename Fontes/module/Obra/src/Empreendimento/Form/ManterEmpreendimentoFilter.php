@@ -13,7 +13,70 @@ class ManterEmpreendimentoFilter extends FilterValidator
             case 'prepareElementSearch':
                 $this->filterElementSearch();
                 break;
+            case 'prepareElementManter':
+                $this->filterElementManter($booRequired);
+                break;
         }
+    }
+    
+    protected function filterElementManter($booRequired)
+    {
+        $this->addFilter(
+            'idEmpreendimento',
+            'Id do Empreendimento',
+            $booRequired,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'dsEmpreendimento',
+            'Nome do Empreendimento',
+            true,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'coCep',
+            'CEP',
+            true,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'dsLogradouro',
+            'Logradouro',
+            true,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'dsBairro',
+            'Bairro',
+            true,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'dsComplemento',
+            'Complemento',
+            true,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'coEstado',
+            'Estado',
+            true,
+            null,
+            array()
+        );        
+        $this->addFilter(
+            'coMunicipio',
+            'Municipio',
+            true,
+            null,
+            array()
+        );        
     }
 
     protected function filterElementSearch()

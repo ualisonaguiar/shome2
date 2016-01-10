@@ -3,6 +3,7 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator;
 
 /**
  * Application\Entity\Empreendimento
@@ -281,4 +282,11 @@ class Empreendimento
     {
         return self::$arrSituacao[$this->getInSituacao()];
     }
+
+    public function toArray()
+    {
+        $hydrator = new Hydrator\ClassMethods();
+        $hydrator->setUnderscoreSeparatedKeys(false);
+        return $hydrator->extract($this);
+    }    
 }

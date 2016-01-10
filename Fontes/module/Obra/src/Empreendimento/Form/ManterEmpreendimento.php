@@ -6,7 +6,7 @@ use CoreZend\Form\FormGenerator;
 
 class ManterEmpreendimento extends FormGenerator
 {
-    public function prepareElementSearch()
+    public function prepareElementSearch(array $arrEstado = null)
     {
         $this->setAttributes(
             array(
@@ -54,7 +54,7 @@ class ManterEmpreendimento extends FormGenerator
             array(
                 'label' => 'Estado:',
                 'empty_option' => 'Selecione',
-                'value_options' => array(),
+                'value_options' => $arrEstado,
             )
         );
         # Municipio
@@ -146,5 +146,164 @@ class ManterEmpreendimento extends FormGenerator
             )
         );
         $this->setInputFilter(new ManterEmpreendimentoFilter(__FUNCTION__));
+    }
+    
+    public function prepareElementManter(array $arrEstado, $booRequired = true)
+    {
+        $this->addHidden('idEmpreendimento', array('id' => 'idEmpreendimento', 'required' => $booRequired));
+        # Nome do empreendimento
+        $this->addText(
+            'dsEmpreendimento',
+            array(
+                'id' => 'dsEmpreendimento',
+                'class' => 'form-control',
+                'title' => 'Nome do Empreendimento',
+                'placeholder' => 'Nome do Empreendimento',
+                'required' => true,
+                'maxlength' => 255
+            ),
+            array(
+                'label' => 'Nome do Empreendimento:'
+            )
+        );
+        # CEP
+        $this->addCep(
+            'coCep',
+            array(
+                'id' => 'coCep',
+                'class' => 'form-control',
+                'title' => 'CEP',
+                'placeholder' => 'CEP',
+                'required' => true,
+                'maxlength' => 10
+            ),
+            array(
+                'label' => 'CEP:'
+            )
+        );
+        # logradouro
+        $this->addText(
+            'dsLogradouro',
+            array(
+                'id' => 'dsLogradouro',
+                'class' => 'form-control',
+                'title' => 'Logradouro',
+                'placeholder' => 'Nome do Empreendimento',
+                'required' => true,
+                'maxlength' => 255
+            ),
+            array(
+                'label' => 'Logradouro:'
+            )
+        );        
+        # bairro
+        $this->addText(
+            'dsBairro',
+            array(
+                'id' => 'dsBairro',
+                'class' => 'form-control',
+                'title' => 'Bairro',
+                'placeholder' => 'Bairro',
+                'required' => true,
+                'maxlength' => 255
+            ),
+            array(
+                'label' => 'Bairro:'
+            )
+        );        
+        # complemento
+        $this->addText(
+            'dsComplemento',
+            array(
+                'id' => 'dsComplemento',
+                'class' => 'form-control',
+                'title' => 'Complemento/Número da Casa',
+                'placeholder' => 'Complemento/Número da Casa',
+                'required' => true,
+                'maxlength' => 255
+            ),
+            array(
+                'label' => 'Complemento/Número da Casa:'
+            )
+        );        
+        # Estado
+        $this->addSelect(
+            'coEstado',
+            array(
+                'id' => 'coEstado',
+                'class' => 'form-control',
+                'title' => 'Estado',
+                'required' => false,
+            ),
+            array(
+                'label' => 'Estado:',
+                'empty_option' => 'Selecione',
+                'value_options' => $arrEstado,
+                'disable_inarray_validator' => true
+            )
+        ); 
+        # Municipio
+        $this->addSelect(
+            'coMunicipio',
+            array(
+                'id' => 'coMunicipio',
+                'class' => 'form-control',
+                'title' => 'Munícipio',
+                'required' => false,
+            ),
+            array(
+                'label' => 'Munícipio:',
+                'empty_option' => 'Selecione',
+                'value_options' => array(),
+                'disable_inarray_validator' => true
+            )
+        );
+        # botao de voltar
+        $this->addButton(
+            'btnVoltar',
+            array(
+                'type'  => 'button',
+                'class' => 'btn btn-primary',
+                'title' => 'Voltar',
+                'onclick' => "location.href='/empreendimento-obra'"
+            ),
+            array(
+                'label' => 'Voltar',
+                'label_options' => array('disable_html_escape' => true,)
+            )
+        );
+        # botao de salvar
+        $this->addButton(
+            'btnSalvar',
+            array(
+                'type'  => 'submit',
+                'class' => 'btn btn-success',
+                'title' => 'Salvar'
+            ),
+            array(
+                'label' => 'Salvar',
+                'label_options' => array('disable_html_escape' => true)
+            )
+        );
+        $this->setInputFilter(new ManterEmpreendimentoFilter(__FUNCTION__));
+    }
+    
+    public function setData($mixEmpreendimento, $serviceMunicipio = null)
+    {
+        if (is_object($mixEmpreendimento)) {
+            $arrData = $mixEmpreendimento->toArray();
+            $arrDataMunicipio = $serviceMunicipio
+                ->fetchPairs(
+                    'getIdMunicipio',
+                    'getDsNome',
+                    array('idEstado' => $mixEmpreendimento->getIdMunicipio()->getIdEstado()->getIdEstado())
+                );
+            
+            $this->get('coMunicipio')->setAttribute('value_options', $arrDataMunicipio);
+            $arrData['coEstado'] = $mixEmpreendimento->getIdMunicipio()->getIdEstado()->getIdEstado();
+            $arrData['coMunicipio'] = $mixEmpreendimento->getIdMunicipio()->getIdMunicipio();
+            return parent::setData($arrData);
+        }        
+        return parent::setData($mixEmpreendimento);
     }
 }

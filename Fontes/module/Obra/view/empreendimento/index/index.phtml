@@ -106,4 +106,6 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
     </table>
 </div>
 <?php
-$this->headScript()->prependFile($this->basePath('module/obra/js/listagem-empreendimento.js'));
+$this->headScript()
+    ->prependFile($this->basePath('module/obra/js/busca-cep-municipio.js'))
+    ->prependFile($this->basePath('module/obra/js/listagem-empreendimento.js'));

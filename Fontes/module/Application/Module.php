@@ -11,6 +11,9 @@ namespace Application;
 
 use Mensageria\Service\MensageriaEmail as MensageriaEmailService;
 use Mensageria\Service\ConfiguracaoEmail as ConfiguracaoEmailService;
+use Application\Service\Estado as EstadoService;
+use Application\Service\Municipio as MunicipioService;
+use Application\Service\CEP as CepService;
 
 class Module
 {
@@ -41,6 +44,15 @@ class Module
                 },
                 'Mensageria\Service\ConfiguracaoEmail' => function ($service) {
                     return new ConfiguracaoEmailService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Application\Service\Estado' => function ($service) {
+                    return new EstadoService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Application\Service\Municipio' => function ($service) {
+                    return new MunicipioService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Application\Service\CEP' => function () {
+                    return new CepService();
                 },
             )
         );

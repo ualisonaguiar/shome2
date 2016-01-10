@@ -3,6 +3,7 @@
 namespace Obra;
 
 use Empreendimento\Service\Empreendimento as EmpreendimentoService;
+use Empreendimento\Service\Estado as EstadoService;
 
 class Module
 {
@@ -29,6 +30,9 @@ class Module
             'factories' => array(
                 'Empreendimento\Service\Empreendimento' => function ($service) {
                     return new EmpreendimentoService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Empreendimento\Service\Estado' => function ($service) {
+                    return new EstadoService($service->get('Doctrine\ORM\EntityManager'));
                 },
             )
         );

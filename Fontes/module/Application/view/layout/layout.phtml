@@ -38,7 +38,9 @@
         <!-- Scripts -->
         <?php
         echo $this->headScript()
-            ->prependFile($this->basePath('module/corezend/js/library.js'))
+            ->prependFile($this->basePath('module/corezend/js/menu-navigation-bootstrap3.js'))
+            ->prependFile($this->basePath('module/corezend/js/library.js'))                
+            ->prependFile($this->basePath('module/corezend/js/core-zend.js'))            
             ->prependFile($this->basePath('module/corezend/js/include.js'))
             ->prependFile($this->basePath('vendor/jquery-mask/jquery-mask-1.7.7/js/jquery.mask.min.js'))
             ->prependFile($this->basePath('vendor/bootstrap/bootstrap-3.0.3/js/bootstrap.min.js'))
