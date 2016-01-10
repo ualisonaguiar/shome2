@@ -18,5 +18,17 @@ $(document).ready(function () {
     
     $('body').on('click', '#btnPesquisar', function () {
         pesquisar();
+    }).on('click', '.alterar-situacao', function() {
+        openWaitDialog();
+        var arrParameter = new Array(),
+            mixResult;
+        arrParameter['idEmpreendimento'] = $(this).data('empreendimento');
+        mixResult = JSON.parse(ajaxRequest('/empreendimento-obra/alterar-situacao', arrParameter));
+        closeWaitDialog();
+        alertDialog(mixResult.message);
+        if (!mixResult.status) {
+            return false;
+        }
+        pesquisar();
     });
 });

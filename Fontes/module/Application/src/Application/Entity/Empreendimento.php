@@ -13,14 +13,13 @@ use Zend\Stdlib\Hydrator;
  */
 class Empreendimento
 {
-    const co_situacao_ativo = 1;
-    const co_situacao_inativo = 2;
+    const co_situacao_ativo = true;
+    const co_situacao_inativo = false;
 
     static $arrSituacao = array(
         self::co_situacao_ativo => 'Ativo',
         self::co_situacao_inativo => 'Inativo'
     );
-
 
     /**
      * @var integer $idEmpreendimento

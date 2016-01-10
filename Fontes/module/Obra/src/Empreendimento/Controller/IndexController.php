@@ -5,6 +5,7 @@ namespace Empreendimento\Controller;
 use CoreZend\Controller\AbstractCrudController;
 use Empreendimento\Form\ManterEmpreendimento as ManterEmpreendimentoForm;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 use Application\Entity\Empreendimento as EmpreendimentoEntity;
 
 class IndexController extends AbstractCrudController
@@ -35,25 +36,18 @@ class IndexController extends AbstractCrudController
         $request = $this->getRequest();
         $form = new ManterEmpreendimentoForm();
         $form->prepareElementManter($this->getEstado(), false);        
-        if ($request->isPost()) {
-            
-        } else {
-            $intIdEmpreendimento = $this->getEvent()->getRouteMatch()->getParam('idEmpreendimento');
-            $empreendimento = $this->getService()->find($intIdEmpreendimento);
-            if (!$empreendimento->getSituacao() === EmpreendimentoEntity::co_situacao_inativo) {
-                $this->setMessageError('Ação não permitida.');
-                return $this->redirect()->toRoute('empreendimento-obra');
-            }
-            $form->setData($empreendimento, $this->getService('Application\Service\Municipio'));
+        $intIdEmpreendimento = $this->getEvent()->getRouteMatch()->getParam('idEmpreendimento');
+        $empreendimento = $this->getService()->find($intIdEmpreendimento);
+        if (!$empreendimento->getInSituacao()) {
+            $this->setMessageError('Ação não permitida.');
+            return $this->redirect()->toRoute('empreendimento-obra');
         }
-        
+        $form->setData($empreendimento, $this->getService('Application\Service\Municipio'));
         return $this->controlAfterSubmit($form, $this->service, 'save', 'empreendimento-obra', 'Empreendimento cadastrado com sucesso.');
     }
 
     public function ajaxListagemAction()
     {
-        //obra/empreendimento/listagem
-
         $request = $this->getRequest();
         $strHtml = '';
         if ($request->isPost()) {
@@ -70,6 +64,20 @@ class IndexController extends AbstractCrudController
             }
         }
         return $this->getResponse()->setContent($strHtml);
+    }
+    
+    public function alterarSituacaoAction()
+    {
+        $arrResult = array('status' => true, 'message' => 'Situação alterada com sucesso.');
+        try {
+            $request = $this->getRequest();
+            $arrDataPost = $request->getPost()->toArray();
+            $this->getService('Empreendimento\Service\Empreendimento')->alterarSituacao($arrDataPost['idEmpreendimento']);
+        } catch (\Exception $exception) {
+            $arrResul['message'] = $exception->getMessage();
+            $arrResul['status'] = false;
+        }
+        return new JsonModel($arrResult);
     }
     
     protected function getEstado()

@@ -1,5 +1,4 @@
 <?php
-use Application\Entity\Empreendimento as EmpreendimentoEntity;
 
 foreach ($this->register as $register) : ?>
     <tr>
@@ -9,13 +8,13 @@ foreach ($this->register as $register) : ?>
         <td><?php echo $register->getIdMunicipio()->getDsNome(); ?></td>
         <td><?php echo $register->getSituacao(); ?></td>
         <td>
-            <?php if ($register->getSituacao()) : ?>
+            <?php if ($register->getInSituacao()) : ?>
                 <a href="<?php echo $this->url('empreendimento-obra', array('action' => 'edit', 'idEmpreendimento' => $register->getIdEmpreendimento())); ?>" style="cursor: pointer; color: #000;">
                     <i class="fa fa-edit" title="Editar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
                 </a>
-                <i class="fa fa-toggle-on" title="Inativar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
+                <i class="fa fa-toggle-on alterar-situacao" title="Inativar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
             <?php else : ?>
-                <i class="fa fa-toggle-off" title="Ativar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
+                <i class="fa fa-toggle-off alterar-situacao" title="Ativar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
             <?php endif; ?>
         </td>
     </tr>
