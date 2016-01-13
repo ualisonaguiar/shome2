@@ -1,7 +1,28 @@
 <?php
-$strTitle = 'Listagem de Projeto de Obra';
+$strTitle = 'Projeto de Obra';
 echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
 ?>
 <div class="col-md-12">
     <h3 class="text-center"><?php echo $strTitle; ?></h3>
+
+    <ul role="tablist" class="nav nav-tabs" id="myTabs">
+        <li class="active" role="presentation">
+            <a aria-expanded="true" aria-controls="empreendimento" data-toggle="tab" role="tab" id="empreendimento-tab" href="#empreendimento">
+                Empreendimento
+            </a>
+        </li>
+        <li role="presentation" class="">
+            <a aria-controls="projeto" data-toggle="tab" id="projeto-tab" role="tab" href="#projeto" aria-expanded="false">
+                Projetos
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="tabContent">
+        <div aria-labelledby="informacao-tab" id="informacao" class="tab-pane fade active in" role="tabpanel">
+            <?php echo $this->partial('projeto/index/_partial/_detalhes_empreendimento'); ?>
+        </div>
+        <div aria-labelledby="vincular-tab" id="vincular" class="tab-pane fade" role="tabpanel">
+            <?php #echo $this->partial('perfil/perfil-acao/_acao-vinculado'); ?>
+        </div>
+    </div>
 </div>

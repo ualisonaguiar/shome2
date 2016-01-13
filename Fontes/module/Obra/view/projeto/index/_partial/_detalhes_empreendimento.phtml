@@ -1,0 +1,41 @@
+<div class="col-md-12">
+    <br />
+    <div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <label>Nome do Empreendimento:</label>
+                <?php echo $this->empreendimento->getDsEmpreendimento(); ?>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-6">
+                <br />
+                <label>Situação:</label>
+                <br />
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-success <?php echo ($this->empreendimento->getInSituacao()) ? 'active' : 'disabled'; ?>" title="Ativo">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Ativo
+                    </label>
+                    <label class="btn btn-danger <?php echo (!$this->empreendimento->getInSituacao()) ? 'active' : 'disabled'; ?>" title="Inativo">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> Inativo
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <label>Endereço: </label>
+                <ul style="list-style-type:none">
+                    <li>
+                        <?php echo $this->empreendimento->getDsLogradouro() . ', ' . $this->empreendimento->getDsBairro(); ?>
+                    </li>
+                    <li>
+                        <?php
+                        echo $this->empreendimento->getIdMunicipio()->getDsNome() . '/' . $this->empreendimento->getIdMunicipio()->getIdEstado()->getDsSigla() . ' - ' . $this->empreendimento->getCoCep();
+                        ?>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
