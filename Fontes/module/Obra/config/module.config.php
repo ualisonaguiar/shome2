@@ -22,9 +22,11 @@ return array(
             'projeto-obra' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/projeto-obra[/:action][/:idPessoaFisica]',
+                    'route' => '/projeto-obra[/:action][/:idEmpreendimento][/:idProjeto]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z-]+',
+                        'idEmpreendimento' => '[0-9]+',
+                        'idProjeto' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Projeto\Controller\Index',

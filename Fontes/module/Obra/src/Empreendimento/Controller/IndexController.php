@@ -33,7 +33,6 @@ class IndexController extends AbstractCrudController
     
     public function editAction()
     {
-        $request = $this->getRequest();
         $form = new ManterEmpreendimentoForm();
         $form->prepareElementManter($this->getEstado(), false);        
         $intIdEmpreendimento = $this->getEvent()->getRouteMatch()->getParam('idEmpreendimento');

@@ -8,6 +8,9 @@ foreach ($this->register as $register) : ?>
         <td><?php echo $register->getIdMunicipio()->getDsNome(); ?></td>
         <td><?php echo $register->getSituacao(); ?></td>
         <td>
+            <a href="<?php echo $this->url('projeto-obra', array('idEmpreendimento' => $register->getIdEmpreendimento())); ?>" style="cursor: pointer; color: #000;">
+                <i class="fa fa-tasks" title="Projeto" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
+            </a>                        
             <?php if ($register->getInSituacao()) : ?>
                 <a href="<?php echo $this->url('empreendimento-obra', array('action' => 'edit', 'idEmpreendimento' => $register->getIdEmpreendimento())); ?>" style="cursor: pointer; color: #000;">
                     <i class="fa fa-edit" title="Editar" data-empreendimento="<?php echo $register->getIdEmpreendimento(); ?>" style="cursor: pointer;"></i>
