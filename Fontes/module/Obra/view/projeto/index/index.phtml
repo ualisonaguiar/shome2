@@ -18,11 +18,11 @@ echo $this->headTitle($this->translate('SHOME :: ' . $strTitle));
         </li>
     </ul>
     <div class="tab-content" id="tabContent">
-        <div aria-labelledby="informacao-tab" id="informacao" class="tab-pane fade active in" role="tabpanel">
-            <?php echo $this->partial('projeto/index/_partial/_detalhes_empreendimento'); ?>
+        <div aria-labelledby="empreendimento-tab" id="empreendimento" class="tab-pane fade active in" role="tabpanel">
+            <?php echo $this->partial('projeto/index/_partial/_detalhes-empreendimento'); ?>
         </div>
-        <div aria-labelledby="vincular-tab" id="vincular" class="tab-pane fade" role="tabpanel">
-            <?php #echo $this->partial('perfil/perfil-acao/_acao-vinculado'); ?>
+        <div aria-labelledby="projeto-tab" id="projeto" class="tab-pane fade" role="tabpanel">
+            <?php echo $this->partial('projeto/index/_partial/_listagem-projeto'); ?>
         </div>
     </div>
 </div>

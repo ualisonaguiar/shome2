@@ -20,4 +20,9 @@ class IndexController extends AbstractCrudController
         $empreendimento = $this->getService('Empreendimento\Service\Empreendimento')->find($intIdEmpreendimento);
         return new ViewModel(['empreendimento' => $empreendimento]);
     }
+
+    public function addAction()
+    {
+
+    }
 }

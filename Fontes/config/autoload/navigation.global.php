@@ -116,7 +116,44 @@ return array(
                     array(
                         'label' => 'Empreendimento',
                         'route' => 'empreendimento-obra',
-                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Listagem',
+                                'route' => 'empreendimento-obra',
+                                'action' => 'index',
+                                'visible' => false
+                            ),
+                            array(
+                                'label' => 'Novo',
+                                'route' => 'empreendimento-obra',
+                                'action' => 'add',
+                                'visible' => false
+                            ),
+                            array(
+                                'label' => 'Edição',
+                                'route' => 'empreendimento-obra',
+                                'action' => 'edit',
+                                'visible' => false
+                            ),
+                            array(
+                                'label' => 'Projeto',
+                                'route' => 'projeto-obra',
+                                'pages' => array(
+                                    array(
+                                        'label' => 'Listagem',
+                                        'route' => 'projeto-obra',
+                                        'action' => 'index',
+                                        'visible' => false
+                                    ),
+                                    array(
+                                        'label' => 'Novo',
+                                        'route' => 'projeto-obra',
+                                        'action' => 'add',
+                                        'visible' => false
+                                    ),
+                                )
+                            ),
+                        )
                     ),
                 )
             ),
