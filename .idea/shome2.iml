@@ -7,10 +7,17 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
+<<<<<<< HEAD
           <root url="phar://$MODULE_DIR$/Fontes/composer.phar/" />
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/Fontes/composer.phar/" />
+=======
+          <root url="phar://$MODULE_DIR$/Fontes/composer.phar" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/Fontes/composer.phar" />
+>>>>>>> 82f6b59e8a108f6c11b62eec6d1382fe521cfa54
         </SOURCES>
       </library>
     </orderEntry>

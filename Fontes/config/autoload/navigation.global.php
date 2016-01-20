@@ -138,20 +138,14 @@ return array(
                             array(
                                 'label' => 'Projeto',
                                 'route' => 'projeto-obra',
-                                'pages' => array(
-                                    array(
-                                        'label' => 'Listagem',
-                                        'route' => 'projeto-obra',
-                                        'action' => 'index',
-                                        'visible' => false
-                                    ),
-                                    array(
-                                        'label' => 'Novo',
-                                        'route' => 'projeto-obra',
-                                        'action' => 'add',
-                                        'visible' => false
-                                    ),
-                                )
+                                'action' => 'index',
+                                'visible' => false
+                            ),
+                            array(
+                                'label' => 'Novo',
+                                'route' => 'projeto-obra',
+                                'action' => 'add',
+                                'visible' => false
                             ),
                         )
                     ),
