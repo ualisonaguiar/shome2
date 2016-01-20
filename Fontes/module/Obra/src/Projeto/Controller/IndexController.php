@@ -23,6 +23,11 @@ class IndexController extends AbstractCrudController
 
     public function addAction()
     {
-
+        $intIdEmpreendimento = $this->getEvent()->getRouteMatch()->getParam('idEmpreendimento');
+        $empreendimento = $this->getService('Empreendimento\Service\Empreendimento')->find($intIdEmpreendimento);
+        if (!$empreendimento->getInSituacao()) {
+            $this->setMessageWarning('Este empreendimento encontra-se desativado.');
+            return $this->redirect()->toRoute('projeto-obra', array('idEmpreendimento' => $intIdEmpreendimento));
+        }
     }
 }
