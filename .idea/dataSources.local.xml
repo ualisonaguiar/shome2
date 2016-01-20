@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="shome2" uuid="780fa080-a328-4c3e-b8b1-6e2967f1f3de">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>shome2.*</schema-pattern>
+      <default-schemas>shome2.*</default-schemas>
+    </data-source>
+  </component>
+</project>
